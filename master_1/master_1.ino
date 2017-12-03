@@ -1,3 +1,4 @@
+//firmware v.1.0 by Tony and Alex
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(12,11,5,4,3,2);
 int buzzer=A1; 
@@ -9,8 +10,6 @@ const int button3=10;    //team 3 button
 bool buttonstate3=0; 
 const int button4=7;   //team 4 button 
 bool buttonstate4=0; 
-const int reset=5;   //reset button 
-bool buttonstate5=0; 
 int led1 = 6;
 int led2 = 9;
 int led3 = 8;
@@ -22,12 +21,11 @@ pinMode(button1,INPUT);
 pinMode(button2,INPUT); 
 pinMode(button3,INPUT); 
 pinMode(button4,INPUT); 
-pinMode(reset,INPUT); 
 lcd.begin(16,2);
 lcd.print(" JeoParty v1.0");
 lcd.setCursor(0,1);
 lcd.print("by Tony and Alex");
-delay(2000);
+delay(3000);
 lcd.clear();
 } 
  
@@ -36,13 +34,12 @@ buttonstate = digitalRead(button1);
 buttonstate2 = digitalRead(button2); 
 buttonstate3 = digitalRead(button3); 
 buttonstate4 = digitalRead(button4); 
-buttonstate5 = digitalRead(reset); 
 lcd.noDisplay();
 lcd.display();
 while ((buttonstate == HIGH)||(buttonstate2 == HIGH)||(buttonstate3 == HIGH)||(buttonstate4 == HIGH)){ 
 if (buttonstate == HIGH){
   digitalWrite(led1,HIGH);
-  tone(buzzer, 400, 1000);
+  tone(buzzer, 400, 2000);
   lcd.print("     Team 1     ");
  lcd.setCursor(0,1);
  lcd.print("   HAS BUZZED");
@@ -53,7 +50,7 @@ if (buttonstate == HIGH){
 }
 else if(buttonstate2 == HIGH){
   digitalWrite(led2,HIGH);
-  tone(buzzer, 400, 1000); 
+  tone(buzzer, 400, 2000); 
  lcd.print("     Team 2     ");
  lcd.setCursor(0,1);
  lcd.print("   HAS BUZZED");
@@ -64,7 +61,7 @@ else if(buttonstate2 == HIGH){
 }
 else if(buttonstate3 == HIGH){
   digitalWrite(led3,HIGH);
-  tone(buzzer, 400, 1000); 
+  tone(buzzer, 400, 2000); 
 lcd.print("     Team 3     ");
  lcd.setCursor(0,1);
  lcd.print("   HAS BUZZED");
@@ -75,7 +72,7 @@ lcd.print("     Team 3     ");
 }
 else if(buttonstate4 == HIGH){
   digitalWrite(led4,HIGH);
-  tone(buzzer, 400, 1000); 
+  tone(buzzer, 400, 2000); 
  lcd.print("     Team 4     ");
  lcd.setCursor(0,1);
  lcd.print("   HAS BUZZED");
